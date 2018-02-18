@@ -1,0 +1,75 @@
+<div class="horizontal-scroll">
+  <div class="col-md-6" style="padding:10px">
+    <div class="form-group select-page-size-wrap ">
+      <label>
+        Jobs per page
+        <select class="form-control selectpicker show-tick" title="Jobs per page" selectpicker
+                ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="col-md-6" style="padding:10px">
+    <button type="button" class="pull-right btn btn-success btn-with-icon" ng-click="refreshJobs()"><i class="ion-loop"></i>Refresh</button>
+  </div>
+  <table class="table bordered table-hover" st-table="d" st-safe-src="smartTableData">
+    <thead>
+    <tr class="sortable ">
+      <th st-sort="id" class="table-id">    id</th>
+      <th st-sort="job">                    job</th>
+      <th st-sort="queue">                  queue</th>
+      <th st-sort="user">                   user</th>
+      <th st-sort="status">                 status</th>
+      <th st-sort="exit_status">            exit status</th>
+      <th st-sort="wn">                     node</th>
+      <th>                                  actions</th>
+    </tr>
+    <tr>
+      <th><input st-search="id"     placeholder="Search Job Id"   class="input-sm form-control search-input" type="search"/></th>
+      <th><input st-search="job"    placeholder="Search Job Name" class="input-sm form-control search-input" type="search"/></th>
+      <th><input st-search="queue"  placeholder="Search Queue"    class="input-sm form-control search-input" type="search"/></th>
+      <th><input st-search="user"   placeholder="Search User"     class="input-sm form-control search-input" type="search"/></th>
+      <th>
+          <select st-search="status" class="input-sm form-control search-input">
+              <option value="">All</option>
+              <option value="C">Completed</option>
+              <option value="R">Running</option>
+              <option value="Q">Queued</option>
+          </select>
+      </th>
+      <th><input st-search="exit_status"     placeholder="Search Exit Status"     class="input-sm form-control search-input" type="search"/></th>
+      <th><input st-search="wn"     placeholder="Search Node"     class="input-sm form-control search-input" type="search"/></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in d" class="">
+        <td class="table-id">{{item.id}}</td>
+        <td>{{item.job}}</td>
+        <td>{{item.queue}}</td>
+        <td>{{item.user}}</td>
+        <td>
+            <span ng-show="item.status == 'C'" class="label label-primary">Completed Success</span>
+            <span ng-show="item.status == 'CE'" class="label label-danger">Completed Error</span>
+            <span ng-show="item.status == 'R'" class="label label-warning">Running</span>
+            <span ng-show="item.status == 'Q'" class="label label-default">Queued</span>
+        </td>
+        <td>{{item.exit_status}}</td>
+        <td>{{item.wn}}</td>
+        <td>
+          <div class="buttons">
+            <button class="btn btn-success btn-xs" ui-sref="monitor.jobdetail({job_id: item.id})">Detail</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="7" class="text-center">
+          <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+

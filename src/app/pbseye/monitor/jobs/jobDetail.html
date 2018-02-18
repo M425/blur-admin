@@ -1,0 +1,75 @@
+<div class="widgets">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div ng-show="vm.notfound" ba-panel ba-panel-title="Job detail" ba-panel-class="with-scroll">
+        <h4>
+          Job not found...
+        </h4>
+      </div>
+
+      <div ng-hide="vm.notfound" ba-panel ba-panel-title="Job detail" ba-panel-class="with-scroll">
+        <div clsas="col-md-12">
+          <h4 class="intext"> Job Id </h4>
+          <span>{{vm.job.id}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Job Name </h4>
+          <span>{{vm.job.job}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Queue </h4>
+          <span>{{vm.job.queue}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> User </h4>
+          <span>{{vm.job.user}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Submit Host </h4>
+          <span>{{vm.jobd.submit_host}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Server </h4>
+          <span>{{vm.jobd.server}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Status </h4>
+          <span ng-show="vm.job.status == 'C'" class="label label-primary">Completed Success</span>
+          <span ng-show="vm.job.status == 'R'" class="label label-warning">Running</span>
+          <span ng-show="vm.job.status == 'Q'" class="label label-default">Queued</span>
+          <span ng-show="vm.job.status == 'E'" class="label label-warning">Exiting</span>
+          <span ng-show="vm.job.status == 'H'" class="label label-default">Holding</span>
+          <span ng-show="vm.job.status == 'T'" class="label label-default">Moving</span>
+          <span ng-show="vm.job.status == 'W'" class="label label-warning">Waiting</span>
+          <span ng-show="vm.job.status == 'S'" class="label label-error">Suspended</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Exit status </h4>
+          <span>{{vm.jobd.exit_status}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Output </h4>
+          <span>{{vm.jobd.Output_Path}}</span>
+          <button style="margin-left:10px" data-toggle="modal"  class="btn btn-success btn-xs" ng-click="vm.openFile('output', vm.job.id)">watch</button>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Error </h4>
+          <span>{{vm.jobd.Error_Path}}</span>
+          <button style="margin-left:10px" data-toggle="modal" class="btn btn-success btn-xs" ng-click="vm.openFile('error', vm.job.id)">watch</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

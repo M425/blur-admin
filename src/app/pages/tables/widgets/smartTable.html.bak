@@ -6,20 +6,20 @@
       </select>
     </label>
   </div>
-  <table class="table">
+  <table class="table" st-table="smartTableDataN">
     <thead>
     <tr class="sortable ">
-      <th class="table-id">job_id</th>
-      <th>job</th>
-      <th>queue</th>
-      <th>user</th>
-      <th>status</th>
+      <th class="table-id" st-sort="job_id" st-sort-default="true">job_id</th>
+      <th st-sort="job">job</th>
+      <th st-sort="queue">queue</th>
+      <th st-sort="user">user</th>
+      <th st-sort="status">status</th>
     </tr>
     <tr>
       <th><input st-search="job_id" placeholder="Search Job Id" class="input-sm form-control search-input" type="search"/></th>
-      <th><input st-search="job"    placeholder="Search Job Name" class="input-sm form-control search-input" type="search"/></th>
-      <th><input st-search="queue"  placeholder="Search Queue" class="input-sm form-control search-input" type="search"/></th>
-      <th><input st-search="user"   placeholder="Search User" class="input-sm form-control search-input" type="search"/></th>
+      <th><input st-search="job" placeholder="Search Job Name" class="input-sm form-control search-input" type="search"/></th>
+      <th><input st-search="queue" placeholder="Search Queue" class="input-sm form-control search-input" type="search"/></th>
+      <th><input st-search="user" placeholder="Search User" class="input-sm form-control search-input" type="search"/></th>
       <th><input st-search="status" placeholder="Search Status" class="input-sm form-control search-input" type="search"/>
       </th>
     </tr>
@@ -44,6 +44,11 @@
       </tr>
     </tbody>
     <tfoot>
+    <tr>
+      <td colspan="6" class="text-center">
+        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+      </td>
+    </tr>
     </tfoot>
   </table>
 </div>

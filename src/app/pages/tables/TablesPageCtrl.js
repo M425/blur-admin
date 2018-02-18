@@ -9,7 +9,13 @@
       .controller('TablesPageCtrl', TablesPageCtrl);
 
   /** @ngInject */
-  function TablesPageCtrl($scope, $filter, editableOptions, editableThemes) {
+  function TablesPageCtrl($scope, $filter, editableOptions, editableThemes, res) {
+
+    console.log(res);
+    res.get('jobs').then(function(data) {
+      console.log('data in ctrl', data);
+      $scope.smartTableDataN = data;
+    })
 
     $scope.smartTablePageSize = 10;
 
