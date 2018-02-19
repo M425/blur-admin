@@ -15,9 +15,9 @@
           url: '/slider',
           templateUrl: 'app/pages/ui/slider/slider.html',
           title: 'Sliders',
-          sidebarMeta: {
+          /*sidebarMeta: {
             order: 1000,
-          },
+          },*/
         });
   }
 

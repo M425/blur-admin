@@ -28,7 +28,7 @@
           vm.jobd = data;
         });
       }
-    })
+    });
 
     vm.openFile = function (type) {
         vm.modalmsg = '';
@@ -49,6 +49,25 @@
                   modaltype: function () {return vm.modaltype;},
                 }
             });
+        });
+    }
+
+    $scope.refreshJob = function () {
+        res.reset('jobs');
+        res.reset('job', {jobId: vm.job.id});
+        res.get('jobs').then(function(data) {
+          for (var i=0; i<data.length; i++) {
+            if (data[i].job_id.split('.')[0] == $stateParams.job_id) {
+              vm.job = data[i];
+            }
+          }
+          vm.notfound = vm.job == null;
+
+          if(!vm.notfound) {
+            res.get('job', {jobId: vm.job.id}).then(function(data) {
+              vm.jobd = data;
+            });
+          }
         });
     }
   }

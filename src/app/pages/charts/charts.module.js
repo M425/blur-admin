@@ -21,10 +21,10 @@
           abstract: true,
           template: '<div ui-view  autoscroll="true" autoscroll-body-top></div>',
           title: 'Charts',
-          sidebarMeta: {
+          /*sidebarMeta: {
             icon: 'ion-stats-bars',
             order: 150,
-          },
+          },*/
         });
   }
 

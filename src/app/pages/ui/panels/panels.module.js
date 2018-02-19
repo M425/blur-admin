@@ -16,9 +16,9 @@
           templateUrl: 'app/pages/ui/panels/panels.html',
           controller: 'NotificationsPageCtrl',
           title: 'Panels',
-          sidebarMeta: {
+          /*sidebarMeta: {
             order: 1100,
-          },
+          },*/
         });
   }
 

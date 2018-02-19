@@ -20,10 +20,10 @@
           template : '<ui-view  autoscroll="true" autoscroll-body-top></ui-view>',
           abstract: true,
           title: 'Components',
-          sidebarMeta: {
+          /*sidebarMeta: {
             icon: 'ion-gear-a',
             order: 100,
-          },
+          },*/
         });
   }
 

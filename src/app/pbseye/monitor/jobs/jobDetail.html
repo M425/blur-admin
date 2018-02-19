@@ -1,3 +1,12 @@
+<div class="row" style="margin-bottom:10px">
+    <div class="col-md-6" style="">
+        <h6 style="padding-top: 10px"><a ui-sref="monitor.jobs"><i class="ion-android-arrow-back" style="margin-right: 10px"> </i> back to jobs</a></h6>
+    </div>
+    <div class="col-md-6" style="">
+        <button type="button" class="pull-right btn btn-success btn-with-icon" ng-click="refreshJob()"><i class="ion-loop"></i>Refresh</button>
+    </div>
+</div>
+
 <div class="widgets">
 
   <div class="row">
@@ -26,7 +35,12 @@
 
         <div clsas="col-md-12">
           <h4 class="intext"> User </h4>
-          <span>{{vm.job.user}}</span>
+          <span>{{vm.jobd.Job_Owner}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> E group </h4>
+          <span>{{vm.jobd.egroup}}</span>
         </div>
 
         <div clsas="col-md-12">
@@ -42,13 +56,14 @@
         <div clsas="col-md-12">
           <h4 class="intext"> Status </h4>
           <span ng-show="vm.job.status == 'C'" class="label label-primary">Completed Success</span>
+          <span ng-show="vm.job.status == 'X'" class="label label-danger">Completed Error</span>
           <span ng-show="vm.job.status == 'R'" class="label label-warning">Running</span>
           <span ng-show="vm.job.status == 'Q'" class="label label-default">Queued</span>
           <span ng-show="vm.job.status == 'E'" class="label label-warning">Exiting</span>
           <span ng-show="vm.job.status == 'H'" class="label label-default">Holding</span>
           <span ng-show="vm.job.status == 'T'" class="label label-default">Moving</span>
           <span ng-show="vm.job.status == 'W'" class="label label-warning">Waiting</span>
-          <span ng-show="vm.job.status == 'S'" class="label label-error">Suspended</span>
+          <span ng-show="vm.job.status == 'S'" class="label label-danger">Suspended</span>
         </div>
 
         <div clsas="col-md-12">
@@ -66,6 +81,78 @@
           <h4 class="intext"> Error </h4>
           <span>{{vm.jobd.Error_Path}}</span>
           <button style="margin-left:10px" data-toggle="modal" class="btn btn-success btn-xs" ng-click="vm.openFile('error', vm.job.id)">watch</button>
+        </div>
+
+        <!--
+        <div clsas="col-md-12">
+          <h4 class="intext"> M Time </h4>
+          <span>{{vm.jobd.date_mtime | date : 'yyyy MMM dd - HH:mm:ss'}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> E Time </h4>
+          <span>{{vm.jobd.date_etime | date : 'yyyy MMM dd - HH:mm:ss'}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Q Time </h4>
+          <span>{{vm.jobd.date_qtime | date : 'yyyy MMM dd - HH:mm:ss'}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> C Time </h4>
+          <span>{{vm.jobd.date_ctime | date : 'yyyy MMM dd - HH:mm:ss'}}</span>
+        </div>
+        -->
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> M Time </h4>
+          <span>{{vm.jobd.mtime}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> E Time </h4>
+          <span>{{vm.jobd.etime}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Q Time </h4>
+          <span>{{vm.jobd.qtime}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> C Time </h4>
+          <span>{{vm.jobd.ctime}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Start Time </h4>
+          <span>{{vm.jobd.start_time}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Comp Time </h4>
+          <span>{{vm.jobd.comp_time}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Resource - CPU </h4>
+          <span>{{vm.jobd['resources_used.cput']}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Resource - MEM </h4>
+          <span>{{vm.jobd['resources_used.mem']}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Resource - VMEM </h4>
+          <span>{{vm.jobd['resources_used.vmem']}}</span>
+        </div>
+
+        <div clsas="col-md-12">
+          <h4 class="intext"> Resource - Walltime </h4>
+          <span>{{vm.jobd['resources_used.walltime']}}</span>
         </div>
 
       </div>

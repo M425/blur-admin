@@ -32,9 +32,15 @@
       <th>
           <select st-search="status" class="input-sm form-control search-input">
               <option value="">All</option>
-              <option value="C">Completed</option>
+              <option value="C">Completed Success</option>
+              <option value="X">Completed Error</option>
               <option value="R">Running</option>
               <option value="Q">Queued</option>
+              <option value="E">Exiting</option>
+              <option value="H">Holding</option>
+              <option value="T">Moving</option>
+              <option value="W">Waiting</option>
+              <option value="S">Suspended</option>
           </select>
       </th>
       <th><input st-search="exit_status"     placeholder="Search Exit Status"     class="input-sm form-control search-input" type="search"/></th>
@@ -50,9 +56,14 @@
         <td>{{item.user}}</td>
         <td>
             <span ng-show="item.status == 'C'" class="label label-primary">Completed Success</span>
-            <span ng-show="item.status == 'CE'" class="label label-danger">Completed Error</span>
+            <span ng-show="item.status == 'X'" class="label label-danger">Completed Error</span>
             <span ng-show="item.status == 'R'" class="label label-warning">Running</span>
             <span ng-show="item.status == 'Q'" class="label label-default">Queued</span>
+            <span ng-show="item.status == 'E'" class="label label-warning">Exiting</span>
+            <span ng-show="item.status == 'H'" class="label label-default">Holding</span>
+            <span ng-show="item.status == 'T'" class="label label-default">Moving</span>
+            <span ng-show="item.status == 'W'" class="label label-warning">Waiting</span>
+            <span ng-show="item.status == 'S'" class="label label-danger">Suspended</span>
         </td>
         <td>{{item.exit_status}}</td>
         <td>{{item.wn}}</td>

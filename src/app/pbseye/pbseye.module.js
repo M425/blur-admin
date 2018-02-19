@@ -7,6 +7,11 @@
 
   angular.module('BlurAdmin.pbseye', [
     'ui.router',
+    'toastr',
+    'chart.js',
+    'angular-chartist',
+    'angular.morris-chart',
+    'textAngular',
 
     'BlurAdmin.pbseye.monitor',
   ])
@@ -14,7 +19,7 @@
 
   /** @ngInject */
   function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
-    $urlRouterProvider.otherwise('/dashboard');
+    $urlRouterProvider.otherwise('/monitor');
   }
 
 })();

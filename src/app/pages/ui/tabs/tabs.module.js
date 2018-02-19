@@ -15,9 +15,9 @@
           url: '/tabs',
           templateUrl: 'app/pages/ui/tabs/tabs.html',
           title: 'Tabs & Accordions',
-          sidebarMeta: {
+          /*sidebarMeta: {
             order: 800,
-          },
+          },*/
         });
   }
 

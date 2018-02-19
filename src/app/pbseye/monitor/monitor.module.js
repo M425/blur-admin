@@ -19,7 +19,7 @@
           controller: 'MonitorCtrl',
           title: 'Monitor',
           sidebarMeta: {
-            icon: 'ion-grid',
+            icon: 'ion-ios-pulse-strong',
             order: 1,
           },
         }).state('monitor.jobs', {
@@ -28,13 +28,21 @@
           title: 'Jobs',
           controller: 'MonitorPageCtrl',
           sidebarMeta: {
-            order: 0,
+            order: 1,
           },
         }).state('monitor.jobdetail', {
           url: '/job/{job_id}',
           title: 'Job detail',
           templateUrl: 'app/pbseye/monitor/jobs/jobDetail.html',
           controller: 'JobDetailCtrl as vm',
+        }).state('monitor.server', {
+          url: '/server',
+          templateUrl: 'app/pbseye/monitor/server/server.html',
+          title: 'Server',
+          controller: 'ServerPageCtrl',
+          sidebarMeta: {
+            order: 0,
+          },
         });
     $urlRouterProvider.when('/monitor','/monitor/jobs');
   }

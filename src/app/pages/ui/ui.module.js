@@ -28,10 +28,10 @@
           template : '<ui-view  autoscroll="true" autoscroll-body-top></ui-view>',
           abstract: true,
           title: 'UI Features',
-          sidebarMeta: {
+          /*sidebarMeta: {
             icon: 'ion-android-laptop',
             order: 200,
-          },
+          },*/
         });
   }
 

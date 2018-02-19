@@ -15,9 +15,9 @@
           url: '/progressBars',
           templateUrl: 'app/pages/ui/progressBars/progressBars.html',
           title: 'Progress Bars',
-          sidebarMeta: {
+          /*sidebarMeta: {
             order: 600,
-          },
+          },*/
         });
   }
 

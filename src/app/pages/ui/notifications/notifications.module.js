@@ -16,9 +16,9 @@
           templateUrl: 'app/pages/ui/notifications/notifications.html',
           controller: 'NotificationsPageCtrl',
           title: 'Notifications',
-          sidebarMeta: {
+          /*sidebarMeta: {
             order: 700,
-          },
+          },*/
         });
   }
 

@@ -25,7 +25,7 @@
                     data[i].id = data[i].job_id.split('.')[0];
                     if(data[i].status == 'C') {
                       if(data[i].exit_status != '0') {
-                        data[i].status = 'CE';
+                        data[i].status = 'X';
                       }
                     }
                   }

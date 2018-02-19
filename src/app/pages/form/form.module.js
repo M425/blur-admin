@@ -16,10 +16,10 @@
           template : '<ui-view autoscroll="true" autoscroll-body-top></ui-view>',
           abstract: true,
           title: 'Form Elements',
-          sidebarMeta: {
+          /*sidebarMeta: {
             icon: 'ion-compose',
             order: 250,
-          },
+          },*/
         })
         .state('form.inputs', {
           url: '/inputs',
