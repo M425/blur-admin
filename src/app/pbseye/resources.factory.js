@@ -24,6 +24,20 @@
                   for (var i=0; i<data.length; i++){
                     data[i].id = data[i].job_id.split('.')[0];
                     if(data[i].status == 'C') {
+                      data[i].status = 'U';
+                      data[i].exit_status = '...';
+                    }
+                    data[i].start_time = 'loading...';
+                  }
+                  return data;
+                }
+              },
+              jobsdetailed: {
+                target: '/jobsdetailed',
+                onRetrieve: function (data) {
+                  for (var i=0; i<data.length; i++){
+                    data[i].id = data[i].job_id.split('.')[0];
+                    if(data[i].status == 'C') {
                       if(data[i].exit_status != '0') {
                         data[i].status = 'X';
                       }
@@ -43,6 +57,20 @@
               stdstream: {
                 target: '/stdstream/$type$/$jobId$',
                 onRetrieve: function (data) {
+                  return data;
+                }
+              },
+              serverinfo: {
+                target: '/serverinfo',
+                onRetrieve: function (data) {
+                  data['localgroup']['total'] = parseFloat(data['localgroup']['total']);
+                  data['localgroup']['used']  = parseFloat(data['localgroup']['used']) ;
+                  data['localgroup']['avail'] = parseFloat(data['localgroup']['avail']);
+
+                  data['localgroup']['total_t'] = data['localgroup']['total'] / 1024.0 / 1024.0 / 1024.0;
+                  data['localgroup']['used_t']  = data['localgroup']['used']  / 1024.0 / 1024.0 / 1024.0;
+                  data['localgroup']['avail_t'] = data['localgroup']['avail'] / 1024.0 / 1024.0 / 1024.0;
+
                   return data;
                 }
               }

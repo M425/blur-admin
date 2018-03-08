@@ -4,7 +4,7 @@
       <label>
         Jobs per page
         <select class="form-control selectpicker show-tick" title="Jobs per page" selectpicker
-                ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+                ng-model="smartTablePageSize" ng-options="i for i in [5,10,20,50,100,200]">
         </select>
       </label>
     </div>
@@ -15,7 +15,8 @@
   <table class="table bordered table-hover" st-table="d" st-safe-src="smartTableData">
     <thead>
     <tr class="sortable ">
-      <th st-sort="id" class="table-id">    id</th>
+      <th st-sort="id" class="table-id"  st-sort-default="reverse">    id</th>
+      <th st-sort="start_time">             time</th>
       <th st-sort="job">                    job</th>
       <th st-sort="queue">                  queue</th>
       <th st-sort="user">                   user</th>
@@ -26,6 +27,7 @@
     </tr>
     <tr>
       <th><input st-search="id"     placeholder="Search Job Id"   class="input-sm form-control search-input" type="search"/></th>
+      <th><input st-search="start_time"    placeholder="Search Start Time" class="input-sm form-control search-input" type="search"/></th>
       <th><input st-search="job"    placeholder="Search Job Name" class="input-sm form-control search-input" type="search"/></th>
       <th><input st-search="queue"  placeholder="Search Queue"    class="input-sm form-control search-input" type="search"/></th>
       <th><input st-search="user"   placeholder="Search User"     class="input-sm form-control search-input" type="search"/></th>
@@ -51,19 +53,21 @@
     <tbody>
       <tr ng-repeat="item in d" class="">
         <td class="table-id">{{item.id}}</td>
+        <td>{{item.start_time}}</td>
         <td>{{item.job}}</td>
         <td>{{item.queue}}</td>
         <td>{{item.user}}</td>
         <td>
-            <span ng-show="item.status == 'C'" class="label label-primary">Completed Success</span>
-            <span ng-show="item.status == 'X'" class="label label-danger">Completed Error</span>
-            <span ng-show="item.status == 'R'" class="label label-warning">Running</span>
-            <span ng-show="item.status == 'Q'" class="label label-default">Queued</span>
-            <span ng-show="item.status == 'E'" class="label label-warning">Exiting</span>
-            <span ng-show="item.status == 'H'" class="label label-default">Holding</span>
-            <span ng-show="item.status == 'T'" class="label label-default">Moving</span>
-            <span ng-show="item.status == 'W'" class="label label-warning">Waiting</span>
-            <span ng-show="item.status == 'S'" class="label label-danger">Suspended</span>
+            <span ng-show="item.status == 'C'" class="label label-primary"> Completed Success </span>
+            <span ng-show="item.status == 'X'" class="label label-danger">  Completed Error </span>
+            <span ng-show="item.status == 'U'" class="label label-default"> Completed... </span>
+            <span ng-show="item.status == 'R'" class="label label-warning"> Running </span>
+            <span ng-show="item.status == 'Q'" class="label label-default"> Queued </span>
+            <span ng-show="item.status == 'E'" class="label label-warning"> Exiting </span>
+            <span ng-show="item.status == 'H'" class="label label-default"> Holding </span>
+            <span ng-show="item.status == 'T'" class="label label-default"> Moving </span>
+            <span ng-show="item.status == 'W'" class="label label-warning"> Waiting </span>
+            <span ng-show="item.status == 'S'" class="label label-danger">  Suspended </span>
         </td>
         <td>{{item.exit_status}}</td>
         <td>{{item.wn}}</td>

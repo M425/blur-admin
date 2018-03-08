@@ -7,7 +7,7 @@
   </div>
   <div class="modal-body">
       <div class="filestream">
-          <p class="lineoffile" ng-repeat="line in modalmsg">{{line}}</p>
+          <p class="lineoffile" ng-repeat="line in modalmsg track by $index">{{line}}</p>
       </div>
   </div>
 </div>

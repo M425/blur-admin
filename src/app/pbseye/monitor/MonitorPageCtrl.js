@@ -12,24 +12,18 @@
   function MonitorPageCtrl($scope, $filter, editableOptions, editableThemes, res, toastr) {
 
     res.get('jobs').then(function(data) {
-      console.log('data in ctrl', data);
       $scope.smartTableData = data;
-      toastr.info('There are ' + data.length + ' jobs.', 'Jobs loaded', {
-        "autoDismiss": false,
-        "positionClass": "toast-bottom-right",
-        "type": "info",
-        "timeOut": "5000",
-        "extendedTimeOut": "2000",
-        "allowHtml": false,
-        "closeButton": false,
-        "tapToDismiss": true,
-        "progressBar": true,
-        "newestOnTop": true,
-        "maxOpened": 0,
-        "preventDuplicates": false,
-        "preventOpenDuplicates": false
+      toastr.info('There are ' + data.length + ' jobs.', 'Jobs loaded');
+      res.get('jobsdetailed', {}, {noLoading: true}).then(function(data) {
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].id == $scope.smartTableData[i].id) {
+            $scope.smartTableData[i].start_time = data[i].start_time;
+            $scope.smartTableData[i].exit_status = data[i].exit_status;
+            $scope.smartTableData[i].status = data[i].status;
+          }
+        }
       });
-    })
+    });
 
     $scope.smartTablePageSize = 10;
 
@@ -38,10 +32,20 @@
     $scope.refreshJobs = function () {
         console.log('refreshing...');
         res.reset('jobs');
+        res.reset('jobsdetailed');
+
         res.get('jobs').then(function(data) {
-          console.log('data in ctrl', data);
           $scope.smartTableData = data;
           toastr.info('There are ' + data.length + ' jobs.', 'Jobs loaded');
+          res.get('jobsdetailed', {}, {noLoading: true}).then(function(data) {
+            for (var i = 0; i < data.length; i++) {
+              if (data[i].id == $scope.smartTableData[i].id) {
+                $scope.smartTableData[i].start_time = data[i].start_time;
+                $scope.smartTableData[i].exit_status = data[i].exit_status;
+                $scope.smartTableData[i].status = data[i].status;
+              }
+            }
+          });
         });
     }
   }

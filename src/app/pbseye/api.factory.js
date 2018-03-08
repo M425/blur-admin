@@ -13,7 +13,7 @@
         var api = {};
 
         // Base Url
-        api.baseUrl = 'http://atlas-pbseye.roma2.infn.it';
+        api.baseUrl = 'https://atlas-pbseye.roma2.infn.it';
 
         api.request = function (args) {
           // Continue
